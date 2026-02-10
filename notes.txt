@@ -1,0 +1,2 @@
+Fichier de l'atelier Git-formation.
+Ajoutez vos lignes ici pour les exercices (commits, conflits, branches).
