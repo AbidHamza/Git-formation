@@ -1,15 +1,22 @@
-name: CI
+name: CI avec env et secret
 
-on:
-  push:
-    branches: [main]
-  pull_request:
-    branches: [main]
+on: [push]
+
+env:
+  APP_VERSION: '1.0.0'
 
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Vérification
-        run: echo "CI OK sur le dépôt Git-formation"
+
+      - name: Afficher la version (env visible)
+        run: |
+          echo "Version de l'app : $APP_VERSION"
+
+      - name: Utiliser le secret (masqué dans les logs)
+        env:
+          SECRET: ${{ secrets.MY_SECRET }}
+        run: |
+          echo "Secret configuré : $([ -n "$SECRET" ] && echo 'OUI' || echo 'NON')"
