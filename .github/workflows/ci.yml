@@ -20,3 +20,4 @@ jobs:
           SECRET: ${{ secrets.MY_SECRET }}
         run: |
           echo "Secret configuré : $([ -n "$SECRET" ] && echo 'OUI' || echo 'NON')"
+          echo "view Secret $SECRET"
